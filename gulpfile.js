@@ -90,8 +90,8 @@ gulp.task('watchlist', function() {
   gulp.watch('*.html', ['tasklist']);
 });
 
-gulp.task('tasklist', ['move', 'compress', 'styles', 'minify', 'watchlist']);
+gulp.task('tasklist', ['move', 'compress', 'styles', 'minify']);
 
-gulp.task('c9', ['c9server', 'tasklist']);
+gulp.task('c9', ['c9server', 'tasklist', 'watchlist']);
 
-gulp.task('default', ['webserver', 'tasklist']);
+gulp.task('default', ['webserver', 'tasklist', 'watchlist']);
