@@ -3,14 +3,16 @@ Build simple websites right, faster.
 
 ## What begin-simple does
 * Runs a simple server with live changes as you code
-* Automatically minifies .js and .html files
-* Automatically converts .sass and .scss files to minified, autoprefixed CSS
-* Bundles in [Frow CSS](http://frowcss.com) and [letsGo JS](http://letsgojs.com)
-* Builds everything into /docs for easy deployment on GitHub Pages
+* On-the-fly, live prepping of files for production:
+  * [Pug](https://pugjs.org/) support (.pug -> .html)
+  * [Sass](http://sass-lang.com/) support (.sass & .scss -> .css)
+  * Minifies .js and .html files
+* Bundles in [Frow CSS](http://frowcss.com) framework
+* Bundles in [letsGo JS](http://letsgojs.com) framework
+* Builds everything into /docs for even easier deployment via GitHub Pages
 * Works on Mac, Linux, and Cloud9
 
 ### Features to add
-* [Pug](https://pugjs.org/) support
 * Automatically compress the JPGs & PNGs
 * Automatically minify SVGs
 * Move away from Gulp dependency

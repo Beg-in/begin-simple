@@ -1,0 +1,1 @@
+Place any Pug templates in this folder.
