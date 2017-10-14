@@ -1,0 +1,25 @@
+{
+  "name": "replace-me",
+  "version": "1.0.0",
+  "description": "replace-me",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "4.0.0",
+    "gulp-clean-css": "3.9.0",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-minify": "1.0.0",
+    "gulp-sass": "3.1.0",
+    "gulp-webserver": "0.9.1"
+  },
+  "dependencies": {
+    "frow": "2.0.1",
+    "letsgo": "0.2.3"
+  }
+}
