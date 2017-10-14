@@ -81,13 +81,13 @@ gulp.task('clean', function() {
 });
 
 gulp.task('watchlist', function() {
-  gulp.watch('sass/**/*.{sass,scss}', ['styles']);
-  gulp.watch('node_modules/frow/**/*.{sass,scss}', ['styles']);
-  gulp.watch('js/**/*.js', ['compress']);
-  gulp.watch('node_modules/letsgo/letsgo.js', ['compress']);
-  gulp.watch('fonts/**/*.{ttf,otf,woff,woff2,svg,eot}', ['move']);
-  gulp.watch('images/**/*.{svg,png,jpg,jpeg,gif,ico}', ['move']);
-  gulp.watch('*.html', ['minify']);
+  gulp.watch('sass/**/*.{sass,scss}', ['tasklist']);
+  gulp.watch('node_modules/frow/**/*.{sass,scss}', ['tasklist']);
+  gulp.watch('js/**/*.js', ['tasklist']);
+  gulp.watch('node_modules/letsgo/letsgo.js', ['tasklist']);
+  gulp.watch('fonts/**/*.{ttf,otf,woff,woff2,svg,eot}', ['tasklist']);
+  gulp.watch('images/**/*.{svg,png,jpg,jpeg,gif,ico}', ['tasklist']);
+  gulp.watch('*.html', ['tasklist']);
 });
 
 gulp.task('tasklist', ['move', 'compress', 'styles', 'minify', 'watchlist']);
