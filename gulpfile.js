@@ -9,7 +9,7 @@ const cleanCSS = require('gulp-clean-css');
 const minify = require('gulp-minify');
 const htmlmin = require('gulp-htmlmin');
 
-gulp.task('compress', function() {
+gulp.task('compress', ['clean'], function() {
   gulp.src(['js/**/*.js', 'node_modules/letsgo/letsgo.js'])
   .pipe(minify({
     ext:{
@@ -22,7 +22,7 @@ gulp.task('compress', function() {
   .pipe(gulp.dest('docs/js'));
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', ['clean'], function() {
   gulp.src(['sass/**/*.scss', 'sass/**/*.sass'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -33,7 +33,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('./docs/css'));
 });
 
-gulp.task('minify', function() {
+gulp.task('minify', ['clean'], function() {
   return gulp.src('*.html')
   .pipe(htmlmin({
     collapseWhitespace: true,
@@ -42,7 +42,7 @@ gulp.task('minify', function() {
   .pipe(gulp.dest('docs'));
 });
 
-gulp.task('move', function() {
+gulp.task('move', ['clean'], function() {
   gulp.src('fonts/**/*.ttf')
     .pipe(gulp.dest('docs/fonts'));
   gulp.src('favicon.png')
@@ -96,7 +96,7 @@ gulp.task('watchlist', function() {
   gulp.watch('*.html', ['minify']);
 });
 
-gulp.task('tasklist', ['clean', 'move', 'compress', 'styles', 'minify', 'watchlist']);
+gulp.task('tasklist', ['move', 'compress', 'styles', 'minify', 'watchlist']);
 
 gulp.task('c9', ['c9server', 'tasklist']);
 
