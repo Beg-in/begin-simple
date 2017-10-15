@@ -9,8 +9,8 @@
     
     
     "clean": "rimraf docs",
-    "autoprefixer": "postcss -u autoprefixer -r docs/styles/**/*.css",
-    "css": "mkdir -p docs/styles; cd src/styles && cp *.css ../../docs/styles && cp **/*.css --parents ../../docs/styles",
+    "autoprefixer": "postcss -u autoprefixer -r docs/styles/*",
+    "css": "rsync -r --include=\"*/\" --include=\"*.css\" --exclude=\"*\" src/styles docs",
     "sass": "node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles",
     "uglify": "mkdirp docs/scripts -p && uglifyjs src/scripts/*.js -m -o docs/js/app.js && uglifyjs src/scripts/*.js -m -c -o docs/scripts/app.min.js",
     "imagemin": "imagemin src/images/**/*.{png,jpg,jpeg,gif,ico} -o docs/images",
