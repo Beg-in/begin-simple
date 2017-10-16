@@ -6,42 +6,46 @@
   "author": "",
   "license": "",
   "scripts": {
-    "clean": "rimraf docs",
-    "serve": "browser-sync start --server \"docs\" --port 8081",
+    "clean": "run-s rimraf docs",
+    "server": "browser-sync start --server \"docs\" --port 8081",
     
     "sass": "node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles",
     "cssmove": "rsync -r -I --include=\"*/\" --include=\"*.css\" --exclude=\"*\" src/styles/* docs/styles",
     "autoprefixer": "postcss -u autoprefixer -r docs/styles/*.css; postcss -u autoprefixer -r docs/styles/**/*.css",
-    "cssnano": "postcss -u cssnano -r docs/styles/*.css docs/styles/**/*.css; postcss -u cssnano -r docs/styles/**/*.css",
+    "cssnano": "postcss -u cssnano -r docs/styles/*.css docs/styles/*.css; postcss -u cssnano -r docs/styles/**/*.css",
     
-    "uglify": "mkdirp docs/scripts -p; uglifyjs node_modules/letsgo/letsgo.js src/scripts/*.js src/scripts/**/*.js -m -c -o docs/scripts/app.js",
+    "uglify": "mkdirp docs/scripts -p; uglifyjs $(cat src/scripts/_include.txt | egrep -v \"^\\s*(#|$)\") src/scripts/*.js src/scripts/**/*.js -m -c -o docs/scripts/app.js",
     
     "svgmin": "svgo src/images -r -o docs/images",
     "imagemin": "imagemin src/images/**/*.{png,jpg,jpeg,gif,ico} -o docs/images",
     
     "pug": "pug src/views -o docs",
     "htmlmove": "rsync -r -I --include=\"*/\" --include=\"*.html\" --exclude=\"*\" src/views/* docs",
+    "htmlmin": "html-minifier --minify-css true --minify-js true --input-dir docs --output-dir docs",
     
     "othermove": "rsync -r -I --exclude=\"images\" --exclude=\"scripts\" --exclude=\"images\" --exclude=\"styles\" --exclude=\"views\" src/ docs",
     
     "build:css": "run-s sass cssmove autoprefixer cssnano",
     "build:js": "run-s uglify",
     "build:images": "run-s svgmin imagemin",
-    "build:html": "pug htmlmin",
+    "build:html": "run-s pug htmlmove htmlmin",
+    "build:other": "run-s othermove",
     "build": "run-s build:*",
     
     "watch:css": "onchange \"src/styles\" -- run-s build:css",
     "watch:js": "onchange \"src/scripts\" -- run-s build:js",
     "watch:images": "onchange \"src/images\" -- run-s build:images",
     "watch:html": "onchange \"src/views\" -- run-s build:html",
+    "watch:other": "onchange \"src/**/*\" -e \"src/images\" -e \"src/scripts\" -e \"src/styles\" -e \"src/views\" -- build:other",
     "watch": "run-p serve watch:*",
     
     "c9": "run-s clean watch"
   },
-  "devDependencies": {
+  "devDependencies": { 
     "autoprefixer": "^7.1.5",
     "browser-sync": "^2.18.13",
     "cssnano": "^4.0.0-rc.2",
+    "html-minifier": "^3.5.5",
     "imagemin-cli": "^3.0.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.5.3",
@@ -51,7 +55,7 @@
     "pug-cli": "^1.0.0-alpha6",
     "rimraf": "^2.6.2",
     "svgo": "git+https://git@github.com/svg/svgo/",
-    "uglify-js": "^3.1.3"
+    "uglify-js": "^3.1.4"
   },
   "dependencies": {
     "frow": "2.0.1",
