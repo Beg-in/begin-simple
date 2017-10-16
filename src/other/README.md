@@ -1,1 +1,0 @@
-Anything in this folder is copied directly into /docs
