@@ -7,24 +7,36 @@
   "license": "",
   "scripts": {
     "clean": "rimraf docs",
+    "serve": "browser-sync start --server \"docs\" --port 8081",
+    
+    "sass": "node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles",
+    "cssmove": "rsync -r -I --include=\"*/\" --include=\"*.css\" --exclude=\"*\" src/styles/* docs/styles",
     "autoprefixer": "postcss -u autoprefixer -r docs/styles/*.css; postcss -u autoprefixer -r docs/styles/**/*.css",
     "cssnano": "postcss -u cssnano -r docs/styles/*.css docs/styles/**/*.css; postcss -u cssnano -r docs/styles/**/*.css",
-    "css": "rsync -r -I --include=\"*/\" --include=\"*.css\" --exclude=\"*\" src/styles docs",
-    "sass": "node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles",
+    
     "uglify": "mkdirp docs/scripts -p; uglifyjs node_modules/letsgo/letsgo.js src/scripts/*.js src/scripts/**/*.js -m -c -o docs/scripts/app.js",
-    "imagemin": "imagemin src/images/**/*.{png,jpg,jpeg,gif,ico} -o docs/images",
+    
     "svgmin": "svgo src/images -r -o docs/images",
-    "serve": "browser-sync start --server \"docs\" --port 8081",
-    "build:css": "run-s sass css autoprefixer cssnano",
+    "imagemin": "imagemin src/images/**/*.{png,jpg,jpeg,gif,ico} -o docs/images",
+    
+    "pug": "pug src/views -o docs",
+    "htmlmove": "rsync -r -I --include=\"*/\" --include=\"*.html\" --exclude=\"*\" src/views/* docs",
+    
+    "othermove": "rsync -r -I --exclude=\"images\" --exclude=\"scripts\" --exclude=\"images\" --exclude=\"styles\" --exclude=\"views\" src/ docs",
+    
+    "build:css": "run-s sass cssmove autoprefixer cssnano",
     "build:js": "run-s uglify",
-    "build:images": "run-s imagemin svgmin",
+    "build:images": "run-s svgmin imagemin",
     "build:html": "pug htmlmin",
     "build": "run-s build:*",
+    
     "watch:css": "onchange \"src/styles\" -- run-s build:css",
     "watch:js": "onchange \"src/scripts\" -- run-s build:js",
     "watch:images": "onchange \"src/images\" -- run-s build:images",
     "watch:html": "onchange \"src/views\" -- run-s build:html",
-    "watch": "run-p serve watch:*"
+    "watch": "run-p serve watch:*",
+    
+    "c9": "run-s clean watch"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -36,6 +48,7 @@
     "npm-run-all": "^4.1.1",
     "onchange": "^3.2.1",
     "postcss-cli": "^4.1.1",
+    "pug-cli": "^1.0.0-alpha6",
     "rimraf": "^2.6.2",
     "svgo": "git+https://git@github.com/svg/svgo/",
     "uglify-js": "^3.1.3"
