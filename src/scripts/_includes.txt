@@ -1,6 +1,5 @@
 # This _includes file allows you to include .js files from outside /src/scripts
 # All listed files and any .js file in /docs/scripts are built into /docs/scripts/app.js
-#
 # Put each path on it's own line in this file
 #
 # letsGo (http://letsgojs.com) on by default, comment out to remove.
