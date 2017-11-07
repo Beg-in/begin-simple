@@ -11,7 +11,7 @@
     "clean:images": "rimraf docs/images",
     "clean:html": "rimraf docs/*.html; rimraf docs/**/*.html",
     "clean": "rimraf docs",
-    "sass": "mkdirp docs/scripts; SOURCE='src/styles/*.sass src/styles/**/*.sass src/styles/*.scss src/styles/**/*.scss' COMMAND='node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles' npm run testfiles",
+    "sass": "mkdirp docs/styles; SOURCE='src/styles/*.sass src/styles/**/*.sass src/styles/*.scss src/styles/**/*.scss' COMMAND='node-sass --indented-syntax true --output-style compressed -o docs/styles src/styles' npm run testfiles",
     "cssmove": "rsync -r -I --include=\"*/\" --include=\"*.css\" --exclude=\"*\" src/styles/* docs/styles",
     "autoprefixer": "SOURCE='docs/styles/*.css' COMMAND='postcss -u autoprefixer -r docs/styles/*.css' npm run testfiles; SOURCE='docs/styles/**/*.css' COMMAND='postcss -u autoprefixer -r docs/styles/**/*.css' npm run testfiles",
     "cssnano": "SOURCE='docs/styles/*.css' COMMAND='postcss -u cssnano -r docs/styles/*.css' npm run testfiles; SOURCE='docs/styles/**/*.css' COMMAND='postcss -u cssnano -r docs/styles/**/*.css' npm run testfiles",
@@ -40,12 +40,9 @@
     "watch": "run-p watch:* 1>/dev/null",
     "server": "browser-sync start --f \"docs/*\" --server \"docs\" --port 8081",
     "running": "run-p watch server",
-    "testfiles": "(ls $SOURCE 2>/dev/null && npm run $COMMAND) || true",
+    "testfiles": "(ls $SOURCE 2>/dev/null && $COMMAND) || true",
     "begin:verbose": "run-s clean build 1>/dev/null",
-    "begin": "run-s begin:verbose running",
-    "line1": "true",
-    "line2": "echo 'hi'",
-    "test": "run-s line1 line2"
+    "begin": "run-s begin:verbose running"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -54,7 +51,7 @@
     "htmlclean-cli": "^1.0.5",
     "imagemin-cli": "^3.0.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.6.0",
     "npm-run-all": "^4.1.1",
     "onchange": "^3.2.1",
     "postcss-cli": "^4.1.1",
