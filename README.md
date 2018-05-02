@@ -21,8 +21,7 @@ Build simple websites right, faster.
 
 ## Set up for Cloud9
 * Fork and then clone this repo into Cloud9 (as Blank Template).
-* Run `nvm install stable`
-* Run `nvm alias default stable`
+* Run `nvm install node && nvm alias default node && nvm use node`
 * Run `npm install`
 
 ## Customize for your project
