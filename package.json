@@ -38,7 +38,7 @@
     "watch:html": "onchange \"src/views\" -- run-s build:html",
     "watch:other": "onchange \"src/**/*\" -e \"src/images\" -e \"src/scripts\" -e \"src/styles\" -e \"src/views\" -- clean build:other",
     "watch": "run-p watch:*",
-    "server": "browser-sync start --f \"docs/**/*\" --server \"docs\" --port 8081 --ui-port 8082",
+    "server": "browser-sync start --f \"docs/**/*\" --server \"docs\" --port 8081 --ui-port 8082 1>/dev/tty",
     "running:verbose": "run-p watch",
     "running:quiet": "run-p watch 1>/dev/null",
     "running": "run-p running:quiet server",
