@@ -4,5 +4,5 @@
 #
 # DO NOT REMOVE THIS FILE
 #
-# letsGo (http://letsgojs.com)
+# letsGo (https://letsgojs.com)
 node_modules/letsgo/letsgo.js
