@@ -33,5 +33,5 @@ Build simple websites right, faster.
 
 ## Using begin-simple
 * Navigate to project via Terminal
-* Run `npm run begin`
+* Run `npm start`
 * Watch terminal for the link to preview your website.

@@ -45,26 +45,26 @@
     "testfiles": "((ls $SOURCE) 2>/dev/null && $COMMAND) || true",
     "begin:verbose": "run-s clean build running",
     "begin:quiet": "run-s clean build 1>/dev/null running",
-    "begin": "run-s begin:quiet"
+    "start": "run-s begin:quiet"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.5",
-    "browser-sync": "^2.18.13",
+    "autoprefixer": "^8.4.1",
+    "browser-sync": "^2.24.1",
     "cssnano": "^4.0.0-rc.2",
-    "htmlclean-cli": "^1.0.5",
+    "htmlclean-cli": "^1.0.9",
     "imagemin-cli": "^3.0.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.7.1",
-    "npm-run-all": "^4.1.1",
-    "onchange": "^3.2.1",
-    "postcss-cli": "^4.1.1",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.2",
+    "onchange": "^3.3.0",
+    "postcss-cli": "^5.0.0",
     "pug-cli": "^1.0.0-alpha6",
     "rimraf": "^2.6.2",
-    "svgo": "^1.0.3",
-    "uglify-js": "^3.1.4"
+    "svgo": "^1.0.5",
+    "uglify-js": "^3.3.23"
   },
   "dependencies": {
-    "frow": "2.0.1",
+    "frow": "^3.0.3",
     "letsgo": "0.2.3"
   }
 }
