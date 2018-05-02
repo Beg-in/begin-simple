@@ -1,5 +1,5 @@
 # This _includes file allows you to include .js files from outside /src/scripts
-# All listed files and any .js files in /docs/scripts are built into /docs/scripts/app.js
+# All listed files and any .js files in /src/scripts are built into /docs/scripts/app.js
 # Put each path on its own line in this file
 #
 # DO NOT REMOVE THIS FILE
