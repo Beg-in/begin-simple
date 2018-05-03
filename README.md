@@ -7,8 +7,8 @@ Build simple websites right, faster.
   * [Pug](https://pugjs.org/) support (.pug -> .html)
   * [Sass](https://sass-lang.com/) support (.sass & .scss -> .css)
   * Minifies .js and .html files
-* Bundles in [Frow CSS](https://frowcss.com) framework
-* Bundles in [letsGo JS](https://letsgojs.com) framework
+* Bundles in [Frow CSS](https://frowcss.com) framework (optional)
+* Bundles in [letsGo JS](https://letsgojs.com) framework (optional)
 * Enables easy to manage JS libraries via src/scripts/_templates.txt
 * Builds everything into /docs for instant deployment via [GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch)
 * Works on Mac, Linux, and Cloud9
