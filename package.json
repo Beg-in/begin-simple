@@ -17,7 +17,7 @@
     "cssnano": "SOURCE='docs/styles/*.css' COMMAND='postcss -u cssnano -r docs/styles/*.css' npm run testfiles; SOURCE='docs/styles/**/*.css' COMMAND='postcss -u cssnano -r docs/styles/**/*.css' npm run testfiles",
     "uglify:prep": "mkdirp docs/scripts; cp -f src/scripts/_includes.txt docs/scripts/_includes.txt; test `tail -c 1 docs/scripts/_includes.txt` && echo \"\n\" >> docs/scripts/_includes.txt",
     "uglify:list": "ls src/scripts/*.js 2>/dev/null && echo src/scripts/*.js >> docs/scripts/_includes.txt || true; ls src/scripts/**/*.js 2>/dev/null && echo src/scripts/**/*.js >> docs/scripts/_includes.txt || true",
-    "uglify:run": "test `cat docs/scripts/_includes.txt | egrep -v \"^\\s*(#|$)\"` && uglifyjs $(cat docs/scripts/_includes.txt | egrep -v \"^\\s*(#|$)\") -m -c -o docs/scripts/app.js || true",
+    "uglify:run": "grep -qE '^[^#].*(.(js|JS)$)' docs/scripts/_includes.txt && uglifyjs $(cat docs/scripts/_includes.txt | egrep -v \"^\\s*(#|$)\") -m -c -o docs/scripts/app.js || true",
     "uglify:clean": "rimraf docs/scripts/_includes.txt",
     "uglify": "run-s uglify:*",
     "svgmin": "htmlclean -o docs/images -i src/images",
