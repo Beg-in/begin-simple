@@ -11,6 +11,3 @@ plugins
 platforms
 www
 npm-debug.log
-
-# remove this if using GitHub Pages
-docs
