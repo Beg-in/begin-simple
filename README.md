@@ -5,10 +5,10 @@ Build simple websites right, faster.
 * Runs a simple server with live changes as you code
 * On-the-fly, live prepping of files for production:
   * [Pug](https://pugjs.org/) support (.pug -> .html)
-  * [Sass](http://sass-lang.com/) support (.sass & .scss -> .css)
+  * [Sass](https://sass-lang.com/) support (.sass & .scss -> .css)
   * Minifies .js and .html files
-* Bundles in [Frow CSS](http://frowcss.com) framework
-* Bundles in [letsGo JS](http://letsgojs.com) framework
+* Bundles in [Frow CSS](https://frowcss.com) framework
+* Bundles in [letsGo JS](https://letsgojs.com) framework
 * Enables easy to manage JS libraries via src/scripts/_templates.txt
 * Builds everything into /docs for instant deployment via [GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch)
 * Works on Mac, Linux, and Cloud9
